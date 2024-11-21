@@ -1,0 +1,40 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: #ffffff; /* White background for contrast */
+  border-bottom: 1px solid #ddd; /* Optional bottom border */
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between; /* Space between logo and text */
+  align-items: center; /* Center vertically */
+  max-width: 1200px; /* Optional: center content with a max width */
+  margin: 0 auto; /* Center align content horizontally */
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo and text */
+}
+
+.logo {
+  height: 40px; /* Adjust logo size */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.logo-text {
+  font-size: 1.2rem; /* Adjust text size */
+  font-weight: bold; /* Make it stand out */
+  color: #333333; /* Text color */
+}
+
+.header-text {
+  font-size: 1rem; /* Adjust text size */
+  color: #666666; /* Subtle text color */
+}
