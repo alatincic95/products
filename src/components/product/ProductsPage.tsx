@@ -75,6 +75,7 @@ const ProductsPage = () => {
                 return (
                   <ProductCard
                     key={index}
+                    index={index}
                     addToBasket={addToBasket}
                     product={product}
                   />

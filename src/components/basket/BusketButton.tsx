@@ -14,6 +14,7 @@ export const BusketButton = ({
   return (
     <div className="grid col-12 justify-content-end m-2">
       <Button
+        data-testid="basket-btn"
         icon="pi pi-shopping-cart"
         onClick={() => setIsBasketModalVisible(true)}
         badge={`${basketQuantity > 0 ? basketQuantity : ""}`}

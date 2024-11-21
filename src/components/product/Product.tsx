@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import { IProductProps } from "../../types";
 import { OverlayPanel } from "primereact/overlaypanel";
 
-export const ProductCard = ({ product, addToBasket }: IProductProps) => {
+export const ProductCard = ({ product, addToBasket, index }: IProductProps) => {
   const op = useRef<OverlayPanel>(null);
 
   const handleDetailsClick = (e: React.MouseEvent) => {
@@ -52,6 +52,7 @@ export const ProductCard = ({ product, addToBasket }: IProductProps) => {
               rounded
               text
               onClick={() => addToBasket(product)}
+              data-testid={`add-to-basket-${index}`}
             />
           </div>
           <OverlayPanel
