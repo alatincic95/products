@@ -19,7 +19,6 @@ const useProducts = () => {
     sortOptions[0]
   );
 
-  // State for price filter
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(100);
@@ -65,14 +64,14 @@ const useProducts = () => {
       );
     }
 
-    // Category filter (only apply if a category is selected)
+    // Category filter
     if (selectedCategory !== null) {
       updatedProducts = updatedProducts.filter(
         (product) => product.category === selectedCategory
       );
     }
 
-    // Price filter: only keep products within the selected price range
+    // Price filter
     updatedProducts = updatedProducts.filter(
       (product) =>
         product.price >= priceRange[0] && product.price <= priceRange[1]
@@ -86,7 +85,7 @@ const useProducts = () => {
     });
 
     setFilteredProducts(updatedProducts);
-    setCurrentPage(1); // Reset to the first page after filtering or sorting
+    setCurrentPage(1);
   }, [searchQuery, selectedCategory, sortKey, sortOrder, priceRange, products]);
 
   // Get the products for the current page

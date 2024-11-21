@@ -40,11 +40,10 @@ export const refreshToken = async () => {
     const response = await axios.post(
       REFRESH_URL,
       { expiresInMins: 30 },
-      { withCredentials: true } // Ensures cookies (like refresh token) are sent
+      { withCredentials: true }
     );
     const newAccessToken = response.data.accessToken;
 
-    // Store the new access token locally
     localStorage.setItem("authToken", newAccessToken);
 
     return newAccessToken;

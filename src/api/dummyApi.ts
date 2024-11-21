@@ -2,7 +2,7 @@ import axios from "axios";
 import { refreshToken } from "../services/authService";
 
 const api = axios.create({
-  baseURL: "https://dummyjson.com", // Adjust as needed
+  baseURL: "https://dummyjson.com",
 });
 
 api.interceptors.response.use(
@@ -12,12 +12,10 @@ api.interceptors.response.use(
       try {
         const newAccessToken = await refreshToken();
 
-        // Retry the original request with the new access token
         error.config.headers["Authorization"] = `Bearer ${newAccessToken}`;
         return axios.request(error.config);
       } catch (refreshError) {
         console.error("Session expired. Please log in again.");
-        // Optionally redirect to the login page
         window.location.href = "/login";
         return Promise.reject(refreshError);
       }

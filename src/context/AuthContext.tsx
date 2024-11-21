@@ -48,7 +48,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       navigate("/login"); // Redirect to login if invalid token
     } else {
       setIsAuthenticated(true);
-      // You could also fetch user data based on the token here if necessary
     }
   };
 
@@ -66,7 +65,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setIsAuthenticated(false);
         logout();
       }
-    }, 15 * 60 * 1000); // Refresh every 15 minutes (adjust based on token expiry)
+    }, 15 * 60 * 1000);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);

@@ -3,7 +3,6 @@ import { BasketProduct, Product } from "../types";
 
 const useBasket = () => {
   const [basket, setBasket] = useState<BasketProduct[]>(() => {
-    // Initialize from localStorage on hook creation
     const storedBasket = localStorage.getItem("basket");
     return storedBasket ? JSON.parse(storedBasket) : [];
   });
