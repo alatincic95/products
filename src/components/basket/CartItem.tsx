@@ -1,8 +1,8 @@
 import { Button } from "primereact/button";
-import { IBasketItemProps } from "../../types";
+import { ICartItemProps } from "../../types";
 import { Card } from "primereact/card";
 
-export const BasketItem = ({ item, removeFromBasket }: IBasketItemProps) => {
+export const CartItem = ({ item, removeFromCart }: ICartItemProps) => {
   return (
     <div className="grid col-12 ">
       <Card className="w-full min-h-0">
@@ -40,7 +40,7 @@ export const BasketItem = ({ item, removeFromBasket }: IBasketItemProps) => {
               icon="pi pi-trash"
               text
               severity="danger"
-              onClick={() => removeFromBasket(item.id)}
+              onClick={() => removeFromCart(item.id)}
             />
           </div>
         </div>

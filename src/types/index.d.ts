@@ -68,7 +68,7 @@ export interface IProductsFilters {
 
 export interface IProductProps {
   product: Product;
-  addToBasket: (product: Product) => void;
+  addToCart: (product: Product) => void;
   index: number;
 }
 export interface IPriceFiterProps {
@@ -78,24 +78,24 @@ export interface IPriceFiterProps {
   maxPrice: number;
 }
 
-export type BasketProduct = Product & { quantity: number };
+export type CartProduct = Product & { quantity: number };
 
-export interface IBasketProps {
-  basket: BasketProduct[];
-  removeFromBasket: (productId: number) => void;
-  clearBasket: () => void;
+export interface ICartProps {
+  cart: CartProduct[];
+  removeFromCart: (productId: number) => void;
+  clearCart: () => void;
 }
 
-export interface IBasketItemProps {
-  item: BasketProduct;
-  removeFromBasket: (productId: number) => void;
+export interface ICartItemProps {
+  item: CartProduct;
+  removeFromCart: (productId: number) => void;
 }
 
-export interface IBasketButtonProps {
-  setIsBasketModalVisible: Dispatch<SetStateAction<boolean>>;
-  basketQuantity: number;
-  isBasketModalVisible: boolean;
-  basket: BasketProduct[];
-  removeFromBasket: (productId: number) => void;
-  clearBasket: () => void;
+export interface ICartButtonProps {
+  setIsCartModalVisible: Dispatch<SetStateAction<boolean>>;
+  cartQuantity: number;
+  isCartModalVisible: boolean;
+  cart: CartProduct[];
+  removeFromCart: (productId: number) => void;
+  clearCart: () => void;
 }

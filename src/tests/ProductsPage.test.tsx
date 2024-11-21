@@ -1,15 +1,15 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import useProducts from "../hooks/useProducts";
-import useBasket from "../hooks/useBasket";
 import ProductsPage from "../components/product/ProductsPage";
+import useCart from "../hooks/useCart";
 
 // Mock hooks
 jest.mock("../hooks/useProducts");
-jest.mock("../hooks/useBasket");
+jest.mock("../hooks/useCart");
 
 describe("ProductsPage Component", () => {
   const mockUseProducts = useProducts as jest.Mock;
-  const mockUseBasket = useBasket as jest.Mock;
+  const mockUseCart = useCart as jest.Mock;
 
   beforeEach(() => {
     // Mocking product hook data
@@ -54,15 +54,15 @@ describe("ProductsPage Component", () => {
       maxPrice: 100,
     });
 
-    // Mocking basket hook data
-    mockUseBasket.mockReturnValue({
-      basket: [],
-      removeFromBasket: jest.fn(),
-      clearBasket: jest.fn(),
-      addToBasket: jest.fn(),
-      isBasketModalVisible: false,
-      setIsBasketModalVisible: jest.fn(),
-      basketQuantity: 0,
+    // Mocking cart hook data
+    mockUseCart.mockReturnValue({
+      cart: [],
+      removeFromCart: jest.fn(),
+      clearCart: jest.fn(),
+      addToCart: jest.fn(),
+      isCartModalVisible: false,
+      setIsCartModalVisible: jest.fn(),
+      cartQuantity: 0,
     });
   });
 
@@ -84,16 +84,16 @@ describe("ProductsPage Component", () => {
     expect(screen.getByText("$10")).toBeInTheDocument();
   });
 
-  it("calls addToBasket when the add to basket button is clicked", () => {
-    const addToBasket = jest.fn();
-    mockUseBasket.mockReturnValueOnce({ ...mockUseBasket(), addToBasket });
+  it("calls addToCart when the add to cart button is clicked", () => {
+    const addToCart = jest.fn();
+    mockUseCart.mockReturnValueOnce({ ...mockUseCart(), addToCart });
 
     render(<ProductsPage />);
 
-    const addToBasketButton = screen.getByTestId("add-to-basket-0");
-    fireEvent.click(addToBasketButton);
+    const addToCartButton = screen.getByTestId("add-to-cart-0");
+    fireEvent.click(addToCartButton);
 
-    expect(addToBasket).toHaveBeenCalledWith(
+    expect(addToCart).toHaveBeenCalledWith(
       mockUseProducts().currentPageProducts[0]
     );
   });
@@ -113,18 +113,18 @@ describe("ProductsPage Component", () => {
     expect(setSearchQuery).toHaveBeenCalledWith("Test Query");
   });
 
-  it("shows basket modal when basket button is clicked", async () => {
-    const setIsBasketModalVisible = jest.fn();
-    mockUseBasket.mockReturnValueOnce({
-      ...mockUseBasket(),
-      setIsBasketModalVisible,
+  it("shows cart modal when cart button is clicked", async () => {
+    const setIsCartModalVisible = jest.fn();
+    mockUseCart.mockReturnValueOnce({
+      ...mockUseCart(),
+      setIsCartModalVisible,
     });
 
     render(<ProductsPage />);
 
-    const basketButton = screen.getByTestId("basket-btn");
-    fireEvent.click(basketButton);
+    const cartButton = screen.getByTestId("cart-btn");
+    fireEvent.click(cartButton);
 
-    expect(setIsBasketModalVisible).toHaveBeenCalledWith(true);
+    expect(setIsCartModalVisible).toHaveBeenCalledWith(true);
   });
 });

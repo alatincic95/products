@@ -3,8 +3,8 @@ import useProducts from "../../hooks/useProducts";
 import { ProductCard } from "./Product";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { ProductsFilters } from "./ProductsFilters";
-import useBasket from "../../hooks/useBasket";
-import { BusketButton } from "../basket/BusketButton";
+import useCart from "../../hooks/useCart";
+import { CartButton } from "../basket/CartButton";
 
 const ProductsPage = () => {
   const {
@@ -30,14 +30,14 @@ const ProductsPage = () => {
     maxPrice,
   } = useProducts();
   const {
-    basket,
-    removeFromBasket,
-    clearBasket,
-    addToBasket,
-    isBasketModalVisible,
-    setIsBasketModalVisible,
-    basketQuantity,
-  } = useBasket();
+    cart,
+    removeFromCart,
+    clearCart,
+    addToCart,
+    isCartModalVisible,
+    setIsCartModalVisible,
+    cartQuantity,
+  } = useCart();
 
   return (
     <>
@@ -61,13 +61,13 @@ const ProductsPage = () => {
               minPrice={minPrice}
               maxPrice={maxPrice}
             />
-            <BusketButton
-              setIsBasketModalVisible={setIsBasketModalVisible}
-              basketQuantity={basketQuantity}
-              isBasketModalVisible={isBasketModalVisible}
-              basket={basket}
-              removeFromBasket={removeFromBasket}
-              clearBasket={clearBasket}
+            <CartButton
+              setIsCartModalVisible={setIsCartModalVisible}
+              cartQuantity={cartQuantity}
+              isCartModalVisible={isCartModalVisible}
+              cart={cart}
+              removeFromCart={removeFromCart}
+              clearCart={clearCart}
             />
 
             <div className="grid col-12 m-4">
@@ -76,7 +76,7 @@ const ProductsPage = () => {
                   <ProductCard
                     key={index}
                     index={index}
-                    addToBasket={addToBasket}
+                    addToCart={addToCart}
                     product={product}
                   />
                 );
