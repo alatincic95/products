@@ -1,27 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import React from "react";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { FloatLabel } from "primereact/floatlabel";
 import { Button } from "primereact/button";
+import useLogin from "../../hooks/useLogin";
 
 const Login: React.FC = () => {
-  const { login } = useAuth();
-  const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await login(username, password);
-      navigate("/");
-    } catch (err: any) {
-      setError(err.message || "An error occurred during login.");
-    }
-  };
+  const { error, handleSubmit, username, password, setPassword, setUsername } =
+    useLogin();
 
   return (
     <div className="grid justify-content-center mt-4">

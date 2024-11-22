@@ -27,4 +27,4 @@ export const Cart = ({ cart, clearCart, removeFromCart }: ICartProps) => {
   );
 };
 
-export default React.memo(Cart);
+export default Cart;

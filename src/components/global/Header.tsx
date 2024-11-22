@@ -4,7 +4,7 @@ import LogoutButton from "../login/Logout";
 import { useAuth } from "../../context/AuthContext";
 
 const Header: React.FC = () => {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <header className="header">
@@ -17,12 +17,10 @@ const Header: React.FC = () => {
           <p>Ante Latinčić - King ICT task</p>
         </div>
         <div className="header-text">
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <div>
               <LogoutButton />
             </div>
-          ) : (
-            <p>Please log in</p>
           )}
         </div>
       </div>
