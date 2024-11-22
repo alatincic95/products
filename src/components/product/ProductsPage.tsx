@@ -74,8 +74,7 @@ const ProductsPage = () => {
               {currentPageProducts.map((product, index) => {
                 return (
                   <ProductCard
-                    key={index}
-                    index={index}
+                    key={product.id}
                     addToCart={addToCart}
                     product={product}
                   />

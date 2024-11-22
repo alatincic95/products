@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import { IProductProps } from "../../types";
 import { OverlayPanel } from "primereact/overlaypanel";
 
-export const ProductCard = ({ product, addToCart, index }: IProductProps) => {
+export const ProductCard = ({ product, addToCart }: IProductProps) => {
   const op = useRef<OverlayPanel>(null);
 
   const handleDetailsClick = (e: React.MouseEvent) => {
@@ -11,7 +11,6 @@ export const ProductCard = ({ product, addToCart, index }: IProductProps) => {
       op.current.toggle(e);
     }
   };
-
   return (
     <div
       key={product.id}
@@ -23,7 +22,6 @@ export const ProductCard = ({ product, addToCart, index }: IProductProps) => {
             loading="lazy"
             src={product.thumbnail}
             alt={product.title}
-            className="p-card-img-top"
             style={{
               objectFit: "contain",
               height: "200px",
@@ -52,7 +50,7 @@ export const ProductCard = ({ product, addToCart, index }: IProductProps) => {
               rounded
               text
               onClick={() => addToCart(product)}
-              data-testid={`add-to-cart-${index}`}
+              data-testid={`add-to-cart-${product.id}`}
             />
           </div>
           <OverlayPanel

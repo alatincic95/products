@@ -90,7 +90,7 @@ describe("ProductsPage Component", () => {
 
     render(<ProductsPage />);
 
-    const addToCartButton = screen.getByTestId("add-to-cart-0");
+    const addToCartButton = screen.getByTestId("add-to-cart-1");
     fireEvent.click(addToCartButton);
 
     expect(addToCart).toHaveBeenCalledWith(

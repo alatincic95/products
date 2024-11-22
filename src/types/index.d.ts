@@ -69,7 +69,6 @@ export interface IProductsFilters {
 export interface IProductProps {
   product: Product;
   addToCart: (product: Product) => void;
-  index: number;
 }
 export interface IPriceFiterProps {
   priceRange: [number, number];
