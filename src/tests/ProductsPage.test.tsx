@@ -3,7 +3,6 @@ import useProducts from "../hooks/useProducts";
 import ProductsPage from "../components/product/ProductsPage";
 import useCart from "../hooks/useCart";
 
-// Mock hooks
 jest.mock("../hooks/useProducts");
 jest.mock("../hooks/useCart");
 
@@ -12,7 +11,6 @@ describe("ProductsPage Component", () => {
   const mockUseCart = useCart as jest.Mock;
 
   beforeEach(() => {
-    // Mocking product hook data
     mockUseProducts.mockReturnValue({
       currentPage: 1,
       currentPageProducts: [
@@ -54,7 +52,6 @@ describe("ProductsPage Component", () => {
       maxPrice: 100,
     });
 
-    // Mocking cart hook data
     mockUseCart.mockReturnValue({
       cart: [],
       removeFromCart: jest.fn(),

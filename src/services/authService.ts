@@ -11,9 +11,6 @@ export const login = async (username: string, password: string) => {
       username,
       password,
     });
-    // Store token and user info in local storage
-    console.log("response.data.token", response.data.accessToken);
-
     localStorage.setItem("authToken", response.data.accessToken);
     localStorage.setItem("user", JSON.stringify(response.data));
     return response.data;

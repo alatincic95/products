@@ -22,7 +22,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const userData = await login(username, password);
       setIsAuthenticated(true);
-      setUser(userData); // Store the user data on successful login
+      setUser(userData);
     } catch (error: any) {
       console.log("error", error);
       setIsAuthenticated(false);
@@ -36,16 +36,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setUser(null);
   };
 
-  console.log("isAuthenticated", isAuthenticated);
-
-  // Function to check if the token is valid
   const checkTokenValidity = () => {
     const token = localStorage.getItem("authToken");
     if (!token || token === "INVALID_TOKEN") {
       setIsAuthenticated(false);
       setUser(null);
       localStorage.removeItem("authToken");
-      navigate("/login"); // Redirect to login if invalid token
+
+      // Redirect to login if invalid token
+      navigate("/login");
     } else {
       setIsAuthenticated(true);
     }
@@ -67,7 +66,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       }
     }, 15 * 60 * 1000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (

@@ -6,7 +6,7 @@ const api = axios.create({
 });
 
 api.interceptors.response.use(
-  (response) => response, // Return the response if no errors
+  (response) => response,
   async (error) => {
     if (error.response.status === 401) {
       try {
